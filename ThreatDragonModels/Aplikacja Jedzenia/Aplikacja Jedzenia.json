@@ -374,7 +374,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "przekazania/potwierdzenie",
+              "name": "przekazania zamówienia/potwierdzenie",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -388,7 +388,7 @@
               "trustBoundaryIds": []
             },
             "labels": [
-              "przekazania/potwierdzenie"
+              "przekazania zamówienia/potwierdzenie"
             ],
             "id": "1ed50594-d54e-47f7-be3b-f342460707a5",
             "source": {
@@ -407,6 +407,10 @@
               {
                 "x": 920,
                 "y": 260
+              },
+              {
+                "x": 890,
+                "y": 280
               },
               {
                 "x": 790,
@@ -511,6 +515,10 @@
                 "y": 520
               },
               {
+                "x": 870,
+                "y": 520
+              },
+              {
                 "x": 910,
                 "y": 440
               },
@@ -519,52 +527,6 @@
                 "y": 440
               }
             ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "Data Flow"
-            ],
-            "id": "8c28f86f-9cc5-4cea-bd5c-c90ed491c401",
-            "source": {
-              "x": 535,
-              "y": 90
-            },
-            "target": {
-              "cell": "623e59d2-2844-4e64-baa2-ef5da3b7deff",
-              "port": "34292fe9-0279-4aa6-b1f6-0c5fb3ec8762"
-            }
           },
           {
             "position": {
@@ -1304,7 +1266,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "API do backend/odpowiedź",
+              "name": "złożenie zamówienia",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1318,7 +1280,7 @@
               "trustBoundaryIds": []
             },
             "labels": [
-              "API do backend/odpowiedź"
+              "złożenie zamówienia"
             ],
             "id": "dbd59c1c-53bb-4a23-832c-b941ce84d42b",
             "source": {
