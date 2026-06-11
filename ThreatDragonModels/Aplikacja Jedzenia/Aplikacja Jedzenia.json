@@ -238,6 +238,10 @@
               },
               {
                 "x": 260,
+                "y": 150
+              },
+              {
+                "x": 260,
                 "y": 140
               },
               {
@@ -550,8 +554,8 @@
                 "text": "aplikacja frontend"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -648,12 +652,34 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "7a480fd5-f8d6-4675-8449-2886ed3d0546",
+                  "title": "Brute force na endpoint logowania",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": " Endpoint logowania nie ogranicza liczby prób uwierzytelnienia. Atakujący automatycznie sprawdza tysiące kombinacji hasła i loginu dla danego konta, podszywając się pod prawdziwego użytkownika.",
+                  "mitigation": "Rate limiting maksymalnie 5 prób na 15 minut na adres IP. Blokada czasowa po przekroczeniu limitu, CAPTCHA oraz powiadomienia e-mail o podejrzanych próbach.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": "3"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -1311,6 +1337,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 0
+    "threatTop": 1
   }
 }
