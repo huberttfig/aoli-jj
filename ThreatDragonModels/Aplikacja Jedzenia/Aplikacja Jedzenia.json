@@ -1177,7 +1177,7 @@
               ],
               "threatFrequency": {
                 "spoofing": 0,
-                "repudiation": 1
+                "repudiation": 2
               }
             }
           },
@@ -1195,8 +1195,8 @@
                 "text": "kurier"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1293,9 +1293,27 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "661f05c9-0a8f-4145-b668-627f524babd4",
+                  "title": "Nieuprawniony dostęp do danych lokalizacyjnych innych dostaw",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": " \"Information Disclosure to typ\" nie da sie zaznaczyc. Kurier po zalogowaniu do aplikacji może próbować odpytać API o dane lokalizacyjne lub szczegóły dostaw przypisanych do innych kurierów, jeśli backend nie filtruje wyników po ID kuriera.",
+                  "mitigation": " Backend zwraca kurierowi wyłącznie dostawy przypisane do jego konta. Każde żądanie weryfikuje czy zasób należy do zalogowanego kuriera. Testy autoryzacji dla roli kuriera.\n\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": "2"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 2,
+                "repudiation": 0
+              }
             }
           },
           {
@@ -1355,6 +1373,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 2
+    "threatTop": 3
   }
 }
