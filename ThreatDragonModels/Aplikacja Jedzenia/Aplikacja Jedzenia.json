@@ -434,7 +434,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -455,13 +456,32 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": true,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
+              "threats": [
+                {
+                  "id": "551c6ecf-5b85-4216-8f10-c3cc8865b8bb",
+                  "title": "Podmiana statusu płatności w tranzycie",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Komunikacja między backendem a zewnętrznym serwerem płatności przekracza granicę zaufania. Atakujący może przechwycić odpowiedź i podmienić status z \"failed\" na \"success\", umożliwiając zamówienie bez rzeczywistej płatności.",
+                  "mitigation": " Backend weryfikuje wynik transakcji bezpośrednio z serwerem płatności przez podpisane żądania HTTPS. Webhook z podpisem HMAC. Nigdy nie ufać statusowi z frontendu.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": "4"
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "przekazanie do systemu płatności"
@@ -696,8 +716,8 @@
                 "text": "aplikacja backend"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -794,12 +814,34 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "853ac51c-b261-4f17-9f88-d4ef48601aa9",
+                  "title": "Brak kontroli autoryzacji w endpointach API",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Backend może przyjąć żądanie API bez sprawdzenia, czy zalogowany użytkownik ma prawo dostępu do konkretnego zasobu. Atakujący podaje ID cudzego zamówienia i pobiera jego dane.",
+                  "mitigation": "Sprawdzać uprawnienia przy każdym endpointcie API. Stosować kontrolę dostępu po stronie serwera oraz testy autoryzacji dla każdej roli użytkownika.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": "3"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -816,11 +858,13 @@
                 "text": "Bazydanych"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -917,13 +961,33 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "cce47c15-d716-4ed5-8f1e-ce199d9d1e09",
+                  "title": "Wyciek danych użytkowników z bazy danych",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "Baza danych przechowuje dane osobowe użytkowników, adresy, historię zamówień oraz hashe haseł. Jeśli dostęp do bazy nie jest ograniczony wyłącznie do backendu, atakujący może uzyskać bezpośredni dostęp i pobrać wszystkie rekordy.",
+                  "mitigation": "Mitigations: Ograniczyć dostęp do bazy wyłącznie z serwera backendowego. Szyfrowanie danych wrażliwych, hashe haseł z solą (bcrypt/argon2), monitoring dostępu.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": "4"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
             }
           },
           {
@@ -1373,6 +1437,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 3
+    "threatTop": 6
   }
 }
