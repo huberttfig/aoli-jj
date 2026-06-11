@@ -1060,8 +1060,8 @@
                 "text": "Restauracja"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1158,9 +1158,27 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "d737af16-3f8b-4a5d-b10b-d0aab779d741",
+                  "title": "Fałszywe potwierdzenie przyjęcia zamówienia",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Restauracja może zaprzeczyć, że otrzymała lub potwierdziła zamówienie, jeśli system nie rejestruje szczegółowych logów tej operacji z timestampem i identyfikatorem sesji.",
+                  "mitigation": " Logować każde potwierdzenie zamówienia przez restaurację z timestampem, ID zamówienia i IP. Przechowywać logi w niemodyfikowalnym zewnętrznym systemie.\n\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": "2"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "repudiation": 1
+              }
             }
           },
           {
@@ -1337,6 +1355,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 1
+    "threatTop": 2
   }
 }
